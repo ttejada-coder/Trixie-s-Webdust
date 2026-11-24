@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conversion | Trixie's Webdust</title>
+  <meta name="description" content="Conversion, income tax, looping and payroll tools. A CS 1130 web project at Ateneo de Davao University.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Raleway:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body data-page="conversion">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- SVG icon sprite (used by the menu and the shortcut list) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-convert" viewBox="0 0 24 24"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"/></symbol>
+    <symbol id="i-percent" viewBox="0 0 24 24"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></symbol>
+    <symbol id="i-loop" viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><circle cx="16" cy="14.5" r="1.2"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16V8M8.5 11.5L12 8l3.5 3.5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+    <symbol id="bloom" viewBox="-14 -14 28 28">
+      <g fill="#f59ab6"><circle cy="-8" r="6.5"/><circle cx="7.6" cy="-2.5" r="6.5"/><circle cx="4.7" cy="6.5" r="6.5"/><circle cx="-4.7" cy="6.5" r="6.5"/><circle cx="-7.6" cy="-2.5" r="6.5"/></g>
+      <circle r="3.4" fill="#d4467d"/>
+    </symbol>
+  </svg>
+
+  <div class="app">
+    <!-- ============ LEFT MENU ============ -->
+    <aside class="side side-left">
+      <div class="sticky">
+        <a class="logo" href="index.html" aria-label="TRIXIEDUST, home">TRIXIEDUST</a>
+        <nav aria-label="Main">
+          <ul class="nav">
+            <li><a href="index.html" data-nav="home"><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg>Home</a></li>
+            <li><a href="conversion.html" data-nav="conversion"><svg class="ico" aria-hidden="true"><use href="#i-convert"/></svg>Conversion</a></li>
+            <li><a href="tax.html" data-nav="tax"><svg class="ico" aria-hidden="true"><use href="#i-percent"/></svg>Income Tax</a></li>
+            <li><a href="looping.html" data-nav="looping"><svg class="ico" aria-hidden="true"><use href="#i-loop"/></svg>Looping</a></li>
+            <li><a href="payroll.html" data-nav="payroll"><svg class="ico" aria-hidden="true"><use href="#i-wallet"/></svg>Payroll</a></li>
+            <li><a href="index.html#about" data-nav="about"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg>About Me</a></li>
+          </ul>
+        </nav>
+        <a class="to-top" href="#main"><svg class="ico" aria-hidden="true"><use href="#i-up"/></svg>Back to top</a>
+      </div>
+    </aside>
+
+    <!-- ============ CENTER ============ -->
+    <div class="center">
+      <form id="jump-form" class="searchbar" role="search" novalidate>
+        <label class="sr-only" for="jump-input">Go to a page</label>
+        <svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>
+        <input id="jump-input" list="jump-list" type="text" autocomplete="off" placeholder="Search Here">
+        <datalist id="jump-list"><option value="Home"></option><option value="Conversion"></option><option value="Income Tax"></option><option value="Looping"></option><option value="Payroll"></option><option value="About Me"></option></datalist>
+      </form>
+      <p id="jump-error" class="error" role="alert" hidden></p>
+
+      <main id="main">
+        <section id="conversion" class="block">
+          <header class="section-head">
+            <h2>Conversion</h2>
+            <p>Enter a value, press Convert, and the answer appears below and in a pop-up.</p>
+          </header>
+          <div class="grid-2">
+            <form class="tool-card converter" data-converter="c2f" novalidate>
+              <div class="card-head"><span class="badge" aria-hidden="true">°C</span><h3>Celsius to Fahrenheit</h3></div>
+              <div class="field">
+                <label for="c2f-input">Temperature in °C</label>
+                <input id="c2f-input" name="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 100">
+              </div>
+              <button type="submit" class="btn">Convert</button>
+              <p class="error" role="alert" hidden></p>
+              <output class="result" for="c2f-input" aria-live="polite"></output>
+            </form>
+
+            <form class="tool-card converter" data-converter="f2c" novalidate>
+              <div class="card-head"><span class="badge" aria-hidden="true">°F</span><h3>Fahrenheit to Celsius</h3></div>
+              <div class="field">
+                <label for="f2c-input">Temperature in °F</label>
+                <input id="f2c-input" name="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 212">
+              </div>
+              <button type="submit" class="btn">Convert</button>
+              <p class="error" role="alert" hidden></p>
+              <output class="result" for="f2c-input" aria-live="polite"></output>
+            </form>
+
+            <form class="tool-card converter" data-converter="m2ft" novalidate>
+              <div class="card-head"><span class="badge" aria-hidden="true">m</span><h3>Meters to Feet</h3></div>
+              <div class="field">
+                <label for="m2ft-input">Length in meters</label>
+                <input id="m2ft-input" name="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 10">
+              </div>
+              <button type="submit" class="btn">Convert</button>
+              <p class="error" role="alert" hidden></p>
+              <output class="result" for="m2ft-input" aria-live="polite"></output>
+            </form>
+
+            <form class="tool-card converter" data-converter="ft2m" novalidate>
+              <div class="card-head"><span class="badge" aria-hidden="true">ft</span><h3>Feet to Meters</h3></div>
+              <div class="field">
+                <label for="ft2m-input">Length in feet</label>
+                <input id="ft2m-input" name="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 30">
+              </div>
+              <button type="submit" class="btn">Convert</button>
+              <p class="error" role="alert" hidden></p>
+              <output class="result" for="ft2m-input" aria-live="polite"></output>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- ============ RIGHT RAIL ============ -->
+    <aside class="side side-right" aria-label="Shortcuts">
+      <div class="sticky">
+        <div class="profile">
+          <p class="profile-name">Trixie</p>
+          <p class="profile-sub">CS 1A 1130 Student</p>
+        </div>
+
+        <h2 class="rail-title">Tools</h2>
+        <ul class="tool-list">
+          <li><a class="tool-link" href="conversion.html" data-nav="conversion"><span class="badge" aria-hidden="true"><svg class="ico"><use href="#i-convert"/></svg></span><span><strong>Conversion</strong><u>Temperature and length</u></span></a></li>
+          <li><a class="tool-link" href="tax.html" data-nav="tax"><span class="badge" aria-hidden="true"><svg class="ico"><use href="#i-percent"/></svg></span><span><strong>Income Tax</strong><u>Brackets and tax due</u></span></a></li>
+          <li><a class="tool-link" href="looping.html" data-nav="looping"><span class="badge" aria-hidden="true"><svg class="ico"><use href="#i-loop"/></svg></span><span><strong>Looping</strong><u>Factorial, sum, average</u></span></a></li>
+          <li><a class="tool-link" href="payroll.html" data-nav="payroll"><span class="badge" aria-hidden="true"><svg class="ico"><use href="#i-wallet"/></svg></span><span><strong>Payroll</strong><u>Gross pay and net pay</u></span></a></li>
+        </ul>
+
+        <h2 class="rail-title">Quote</h2>
+        <blockquote class="msg quote">
+          <p>A little magic can take you a long way.</p>
+        </blockquote>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <p>CS 1130: Introduction to Computing</p>
+    <p>Ateneo de Davao University</p>
+  </footer>
+  <!-- Pop-up for conversion answers (closes with the button, Esc, or a click outside) -->
+  <dialog id="result-modal" aria-labelledby="modal-title">
+    <div class="modal-body">
+      <h2 id="modal-title">Result</h2>
+      <p class="modal-input" id="modal-input"></p>
+      <p class="modal-equals">equals</p>
+      <p class="modal-answer" id="modal-answer"></p>
+      <button type="button" class="btn" id="modal-close">Close</button>
+    </div>
+  </dialog>
+</body>
+</html>
